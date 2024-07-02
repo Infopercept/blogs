@@ -1,505 +1,103 @@
 ---
-title: Writing a New Post
+title: Infopercept - The Journey of Creating a Global Platform-Led Managed Security Services Company
 author: cotes
-date: 2019-08-08 14:10:00 +0800
-categories: [Blogging, Tutorial]
-tags: [writing]
+date: 2024-06-16 14:10:00 +0800
+categories: [Infopercept, Risk Management]
+tags: [Infopercept]
 render_with_liquid: false
----
-
-This tutorial will guide you how to write a post in the _Chirpy_ template, and it's worth reading even if you've used Jekyll before, as many features require specific variables to be set.
-
-## Naming and Path
-
-Create a new file named `YYYY-MM-DD-TITLE.EXTENSION`{: .filepath} and put it in the `_posts`{: .filepath} of the root directory. Please note that the `EXTENSION`{: .filepath} must be one of `md`{: .filepath} and `markdown`{: .filepath}. If you want to save time of creating files, please consider using the plugin [`Jekyll-Compose`](https://github.com/jekyll/jekyll-compose) to accomplish this.
-
-## Front Matter
-
-Basically, you need to fill the [Front Matter](https://jekyllrb.com/docs/front-matter/) as below at the top of the post:
-
-```yaml
----
-title: TITLE
-date: YYYY-MM-DD HH:MM:SS +/-TTTT
-categories: [TOP_CATEGORIE, SUB_CATEGORIE]
-tags: [TAG]     # TAG names should always be lowercase
----
-```
-
-> The posts' _layout_ has been set to `post` by default, so there is no need to add the variable _layout_ in the Front Matter block.
-{: .prompt-tip }
-
-### Timezone of Date
-
-In order to accurately record the release date of a post, you should not only set up the `timezone` of `_config.yml`{: .filepath} but also provide the post's timezone in variable `date` of its Front Matter block. Format: `+/-TTTT`, e.g. `+0800`.
-
-### Categories and Tags
-
-The `categories` of each post are designed to contain up to two elements, and the number of elements in `tags` can be zero to infinity. For instance:
-
-```yaml
----
-categories: [Animal, Insect]
-tags: [bee]
----
-```
-
-### Author Information
-
-The author information of the post usually does not need to be filled in the _Front Matter_ , they will be obtained from variables `social.name` and the first entry of `social.links` of the configuration file by default. But you can also override it as follows:
-
-Adding author information in `_data/authors.yml` (If your website doesn't have this file, don't hesitate to create one).
-
-```yaml
-<author_id>:
-  name: <full name>
-  twitter: <twitter_of_author>
-  url: <homepage_of_author>
-```
-{: file="_data/authors.yml" }
-
-And then use `author` to specify a single entry or `authors` to specify multiple entries:
-
-```yaml
----
-author: <author_id>                     # for single entry
-# or
-authors: [<author1_id>, <author2_id>]   # for multiple entries
----
-```
-
-Having said that, the key `author` can also identify multiple entries.
-
-> The benefit of reading the author information from the file `_data/authors.yml`{: .filepath } is that the page will have the meta tag `twitter:creator`, which enriches the [Twitter Cards](https://developer.twitter.com/en/docs/twitter-for-websites/cards/guides/getting-started#card-and-content-attribution) and is good for SEO.
-{: .prompt-info }
-
-### Post Description
-
-By default, the first words of the post are used to display on the home page for a list of posts, in the _Further Reading_ section, and in the XML of the RSS feed. If you don't want to display the auto-generated description for the post, you can customize it using the `description` field in the _Front Matter_ as follows:
-
-```yaml
----
-description: Short summary of the post.
----
-```
-
-Additionally, the `description` text will also be displayed under the post title on the post's page.
-
-## Table of Contents
-
-By default, the **T**able **o**f **C**ontents (TOC) is displayed on the right panel of the post. If you want to turn it off globally, go to `_config.yml`{: .filepath} and set the value of variable `toc` to `false`. If you want to turn off TOC for a specific post, add the following to the post's [Front Matter](https://jekyllrb.com/docs/front-matter/):
-
-```yaml
----
-toc: false
----
-```
-
-## Comments
-
-The global switch of comments is defined by variable `comments.active` in the file `_config.yml`{: .filepath}. After selecting a comment system for this variable, comments will be turned on for all posts.
-
-If you want to close the comment for a specific post, add the following to the **Front Matter** of the post:
-
-```yaml
----
-comments: false
----
-```
-
-## Media
-
-We refer to images, audio and video as media resources in _Chirpy_.
-
-### URL Prefix
-
-From time to time we have to define duplicate URL prefixes for multiple resources in a post, which is a boring task that you can avoid by setting two parameters.
-
-- If you are using a CDN to host media files, you can specify the `cdn` in `_config.yml`{: .filepath }. The URLs of media resources for site avatar and posts are then prefixed with the CDN domain name.
-
-  ```yaml
-  cdn: https://cdn.com
-  ```
-  {: file='_config.yml' .nolineno }
-
-- To specify the resource path prefix for the current post/page range, set `media_subpath` in the _front matter_ of the post:
-
-  ```yaml
-  ---
-  media_subpath: /path/to/media/
-  ---
-  ```
-  {: .nolineno }
-
-The option `site.cdn` and `page.media_subpath` can be used individually or in combination to flexibly compose the final resource URL: `[site.cdn/][page.media_subpath/]file.ext`
-
-### Images
-
-#### Caption
-
-Add italics to the next line of an image, then it will become the caption and appear at the bottom of the image:
-
-```markdown
-![img-description](/path/to/image)
-_Image Caption_
-```
-{: .nolineno}
-
-#### Size
-
-In order to prevent the page content layout from shifting when the image is loaded, we should set the width and height for each image.
-
-```markdown
-![Desktop View](/assets/img/sample/mockup.png){: width="700" height="400" }
-```
-{: .nolineno}
-
-> For an SVG, you have to at least specify its _width_, otherwise it won't be rendered.
-{: .prompt-info }
-
-Starting from _Chirpy v5.0.0_, `height` and `width` support abbreviations (`height` → `h`, `width` → `w`). The following example has the same effect as the above:
-
-```markdown
-![Desktop View](/assets/img/sample/mockup.png){: w="700" h="400" }
-```
-{: .nolineno}
-
-#### Position
-
-By default, the image is centered, but you can specify the position by using one of the classes `normal`, `left`, and `right`.
-
-> Once the position is specified, the image caption should not be added.
-{: .prompt-warning }
-
-- **Normal position**
-
-  Image will be left aligned in below sample:
-
-  ```markdown
-  ![Desktop View](/assets/img/sample/mockup.png){: .normal }
-  ```
-  {: .nolineno}
-
-- **Float to the left**
-
-  ```markdown
-  ![Desktop View](/assets/img/sample/mockup.png){: .left }
-  ```
-  {: .nolineno}
-
-- **Float to the right**
-
-  ```markdown
-  ![Desktop View](/assets/img/sample/mockup.png){: .right }
-  ```
-  {: .nolineno}
-
-#### Dark/Light mode
-
-You can make images follow theme preferences in dark/light mode. This requires you to prepare two images, one for dark mode and one for light mode, and then assign them a specific class (`dark` or `light`):
-
-```markdown
-![Light mode only](/path/to/light-mode.png){: .light }
-![Dark mode only](/path/to/dark-mode.png){: .dark }
-```
-
-#### Shadow
-
-The screenshots of the program window can be considered to show the shadow effect:
-
-```markdown
-![Desktop View](/assets/img/sample/mockup.png){: .shadow }
-```
-{: .nolineno}
-
-#### Preview Image
-
-If you want to add an image at the top of the post, please provide an image with a resolution of `1200 x 630`. Please note that if the image aspect ratio does not meet `1.91 : 1`, the image will be scaled and cropped.
-
-Knowing these prerequisites, you can start setting the image's attribute:
-
-```yaml
----
-image:
-  path: /path/to/image
-  alt: image alternative text
----
-```
-
-Note that the [`media_subpath`](#url-prefix) can also be passed to the preview image, that is, when it has been set, the attribute `path` only needs the image file name.
-
-For simple use, you can also just use `image` to define the path.
-
-```yml
----
-image: /path/to/image
----
-```
-
-#### LQIP
-
-For preview images:
-
-```yaml
----
-image:
-  lqip: /path/to/lqip-file # or base64 URI
----
-```
-
-> You can observe LQIP in the preview image of post \"[Text and Typography](../text-and-typography/)\".
-
-For normal images:
-
-```markdown
-![Image description](/path/to/image){: lqip="/path/to/lqip-file" }
-```
-{: .nolineno }
-
-### Video
-
-#### Social Media Platform
-
-You can embed videos from social media platforms with the following syntax:
-
-```liquid
-{% include embed/{Platform}.html id='{ID}' %}
-```
-
-Where `Platform` is the lowercase of the platform name, and `ID` is the video ID.
-
-The following table shows how to get the two parameters we need in a given video URL, and you can also know the currently supported video platforms.
-
-| Video URL                                                                                          | Platform   | ID             |
-| -------------------------------------------------------------------------------------------------- | ---------- | :------------- |
-| [https://www.**youtube**.com/watch?v=**H-B46URT4mg**](https://www.youtube.com/watch?v=H-B46URT4mg) | `youtube`  | `H-B46URT4mg`  |
-| [https://www.**twitch**.tv/videos/**1634779211**](https://www.twitch.tv/videos/1634779211)         | `twitch`   | `1634779211`   |
-| [https://www.**bilibili**.com/video/**BV1Q44y1B7Wf**](https://www.bilibili.com/video/BV1Q44y1B7Wf) | `bilibili` | `BV1Q44y1B7Wf` |
-
-#### Video Files
-
-If you want to embed a video file directly, use the following syntax:
-
-```liquid
-{% include embed/video.html src='{URL}' %}
-```
-
-Where `URL` is an URL to a video file e.g. `/path/to/sample/video.mp4`.
-
-You can also specify additional attributes for the embedded video file. Here is a full list of attributes allowed.
-
-- `poster='/path/to/poster.png'` — poster image for a video that is shown while video is downloading
-- `title='Text'` — title for a video that appears below the video and looks same as for images
-- `autoplay=true` — video automatically begins to play back as soon as it can
-- `loop=true` — automatically seek back to the start upon reaching the end of the video
-- `muted=true` — audio will be initially silenced
-- `types` — specify the extensions of additional video formats separated by `|`. Ensure these files exist in the same directory as your primary video file.
-
-Consider an example utilizing all of the above:
-
-```liquid
-{%
-  include embed/video.html
-  src='/path/to/video.mp4'
-  types='ogg|mov'
-  poster='poster.png'
-  title='Demo video'
-  autoplay=true
-  loop=true
-  muted=true
-%}
-```
-
-### Audios
-
-If you want to embed an audio file directly, use the following syntax:
-
-```liquid
-{% include embed/audio.html src='{URL}' %}
-```
-
-Where `URL` is an URL to an audio file e.g. `/path/to/audio.mp3`.
-
-You can also specify additional attributes for the embedded audio file. Here is a full list of attributes allowed.
-
-- `title='Text'` — title for an audio that appears below the audio and looks same as for images
-- `types` — specify the extensions of additional audio formats separated by `|`. Ensure these files exist in the same directory as your primary audio file.
-
-Consider an example utilizing all of the above:
-
-```liquid
-{%
-  include embed/audio.html
-  src='/path/to/audio.mp3'
-  types='ogg|wav|aac'
-  title='Demo audio'
-%}
-```
-
-## Pinned Posts
-
-You can pin one or more posts to the top of the home page, and the fixed posts are sorted in reverse order according to their release date. Enable by:
-
-```yaml
----
 pin: true
----
-```
-
-## Prompts
-
-There are several types of prompts: `tip`, `info`, `warning`, and `danger`. They can be generated by adding the class `prompt-{type}` to the blockquote. For example, define a prompt of type `info` as follows:
-
-```md
-> Example line for prompt.
-{: .prompt-info }
-```
-{: .nolineno }
-
-## Syntax
-
-### Inline Code
-
-```md
-`inline code part`
-```
-{: .nolineno }
-
-### Filepath Hightlight
-
-```md
-`/path/to/a/file.extend`{: .filepath}
-```
-{: .nolineno }
-
-### Code Block
-
-Markdown symbols ```` ``` ```` can easily create a code block as follows:
-
-````md
-```
-This is a plaintext code snippet.
-```
-````
-
-#### Specifying Language
-
-Using ```` ```{language} ```` you will get a code block with syntax highlight:
-
-````markdown
-```yaml
-key: value
-```
-````
-
-> The Jekyll tag `{% highlight %}` is not compatible with this theme.
-{: .prompt-danger }
-
-#### Line Number
-
-By default, all languages except `plaintext`, `console`, and `terminal` will display line numbers. When you want to hide the line number of a code block, add the class `nolineno` to it:
-
-````markdown
-```shell
-echo 'No more line numbers!'
-```
-{: .nolineno }
-````
-
-#### Specifying the Filename
-
-You may have noticed that the code language will be displayed at the top of the code block. If you want to replace it with the file name, you can add the attribute `file` to achieve this:
-
-````markdown
-```shell
-# content
-```
-{: file="path/to/file" }
-````
-
-#### Liquid Codes
-
-If you want to display the **Liquid** snippet, surround the liquid code with `{% raw %}` and `{% endraw %}`:
-
-````markdown
-{% raw %}
-```liquid
-{% if product.title contains 'Pack' %}
-  This product's title contains the word Pack.
-{% endif %}
-```
-{% endraw %}
-````
-
-Or adding `render_with_liquid: false` (Requires Jekyll 4.0 or higher) to the post's YAML block.
-
-## Mathematics
-
-We use [**MathJax**][mathjax] to generate mathematics. For website performance reasons, the mathematical feature won't be loaded by default. But it can be enabled by:
-
-[mathjax]: https://www.mathjax.org/
-
-```yaml
----
 math: true
----
-```
-
-After enabling the mathematical feature, you can add math equations with the following syntax:
-
-- **Block math** should be added with `$$ math $$` with **mandatory** blank lines before and after `$$`
-  - **Inserting equation numbering** should be added with `$$\begin{equation} math \end{equation}$$`
-  - **Referencing equation numbering** should be done with `\label{eq:label_name}` in the equation block and `\eqref{eq:label_name}` inline with text (see example below)
-- **Inline math** (in lines) should be added with `$$ math $$` without any blank line before or after `$$`
-- **Inline math** (in lists) should be added with `\$$ math $$`
-
-```markdown
-<!-- Block math, keep all blank lines -->
-
-$$
-LaTeX_math_expression
-$$
-
-<!-- Equation numbering, keep all blank lines  -->
-
-$$
-\begin{equation}
-  LaTeX_math_expression
-  \label{eq:label_name}
-\end{equation}
-$$
-
-Can be referenced as \eqref{eq:label_name}.
-
-<!-- Inline math in lines, NO blank lines -->
-
-"Lorem ipsum dolor sit amet, $$ LaTeX_math_expression $$ consectetur adipiscing elit."
-
-<!-- Inline math in lists, escape the first `$` -->
-
-1. \$$ LaTeX_math_expression $$
-2. \$$ LaTeX_math_expression $$
-3. \$$ LaTeX_math_expression $$
-```
-
-> Starting with `v7.0.0`, configuration options for **MathJax** have been moved to file `assets/js/data/mathjax.js`{: .filepath }, and you can change the options as needed, such as adding [extensions][mathjax-exts].  
-> If you are building the site via `chirpy-starter`, copy that file from the gem installation directory (check with command `bundle info --path jekyll-theme-chirpy`) to the same directory in your repository.
-{: .prompt-tip }
-
-[mathjax-exts]: https://docs.mathjax.org/en/latest/input/tex/extensions/index.html
-
-## Mermaid
-
-[**Mermaid**](https://github.com/mermaid-js/mermaid) is a great diagram generation tool. To enable it on your post, add the following to the YAML block:
-
-```yaml
----
 mermaid: true
+image:
+  path: https://www.infopercept.com/static/assets/images/blogs/may/bloginnerimage/Infopercept_Journey.png
+  lqip: data:image/webp;base64,UklGRpoAAABXRUJQVlA4WAoAAAAQAAAADwAABwAAQUxQSDIAAAARL0AmbZurmr57yyIiqE8oiG0bejIYEQTgqiDA9vqnsUSI6H+oAERp2HZ65qP/VIAWAFZQOCBCAAAA8AEAnQEqEAAIAAVAfCWkAALp8sF8rgRgAP7o9FDvMCkMde9PK7euH5M1m6VWoDXf2FkP3BqV0ZYbO6NA/VFIAAAA
+  alt: 
 ---
-```
 
-Then you can use it like other markdown languages: surround the graph code with ```` ```mermaid ```` and ```` ``` ````.
+Rising cyberattacks on all kinds of organizations have led to strict security compliances by regulators worldwide. As a result, today every business is struggling with two challenges: combating cyberattacks and adhering to security compliances.
 
-## Learn More
+Infopercept was established to take ownership of these two core issues on behalf of the client organizations and tackle them through its cybersecurity solutions.
 
-For more knowledge about Jekyll posts, visit the [Jekyll Docs: Posts](https://jekyllrb.com/docs/posts/).
+Over the years, Infopercept has evolved from a service-based cybersecurity company to a service-driving platform company to its current stage of platform-led managed security services.
+
+With the launch of Invinsense 5.0, we reflect on our journey so far below:
+
+## Phase 1 - A Cybersecurity Services Company
+
+### 2014: Started with [Offensive Security](https://www.infopercept.com/offensive-security-practices/) by Establishing a Red Team
+
+Infopercept’s journey began with offensive security as we found that the majority of the organizations don't do anything beyond penetration testing, which is not sufficient enough in getting the complete picture of vulnerabilities across people, processes, and technology.
+
+Offensive security has many layers and its primary purpose is to make organizations aware of their weaknesses, across landscapes, upon which they can build a solid foundation of their security apparatus.
+
+With our first client, which is a France-based telecommunications company, we assisted them in finding loopholes in their entire ecosystem with layers of offensive security like Attack Surface Monitoring, Vulnerability Management, Breach and Attack Simulation, and RedOps.
+
+### 2015: Inducted [GRC Practices](https://www.infopercept.com/compliance-optimization-center/)
+
+Due to increasing cyberattacks globally, regulators have been stricter by bringing in compliances that organizations have to implement to better safeguard themselves from cyber threats. This has been a headache for businesses as newer security compliances are being introduced regularly, which are difficult to comprehend and challenging to implement due to being resource-intensive.
+
+Also, they require security solutions, somebody to manage those solutions, and subject matter experts who can use these solutions to implement policies, procedures, and controls to comply.
+
+To tackle this problem head-on, Infopercept inducted GRC practices to assist our customers in adhering to all security compliances as dictated by the relevant regulators according to the vertical and geography. We made sure that there were no lapses that could affect their data and systems, or incur the wrath of the regulatory bodies.
+
+Infopercept started its GRC practices with a well-known global insurance company in complying with all the security compliances.
+
+### 2016: Initiated a [24x7 Security Operations Centre](https://www.infopercept.com/security-operation-center/)
+
+In 2016, a group of adversaries managed to hack into the Bank of Bangladesh and steal 81 million from it, which was one of the largest heists in the country. This incident showed that security was no longer a preventive game, as adversaries were becoming sly when it came to penetrating an organization. There was an urgent need to constantly detect and respond to threats as they emerged to avoid full-fledged breaches.
+
+Due to such Incidents across geographies prompted Infopercept to establish its first [24x7 operation center](https://www.infopercept.com/security-operation-center/) for its customers to ensure that any attempts of cyberattacks by adversaries, regardless of time, can be prevented.
+
+Infopercept started its 24x7 security operations by taking ownership of end-to-end detection and response of a European fintech firm.
+
+### 2017: Added [Optimization Approach](https://www.infopercept.com/technology-optimization-center/)
+
+Our bodies need constant maintenance otherwise it becomes vulnerable to diseases that can make us sick. Technologies are just like that and need to be continuously updated otherwise they become susceptible to cyberattacks that work as smartly as organisms that attack a human body. We launched an optimization approach for our customers to ensure that the technologies never fell prey to adversaries and remain in top-notch condition through continuous updates and fine-tuning.
+
+Infopercept started its technology optimization service with a leading bank in Kenya to secure its operations by optimizing its systems, security technologies, and technologies it used for providing its banking services to people.
+
+### 2018: Inaugurated [Optimization Centers](https://www.infopercept.com/technology-optimization-center/)
+
+When it comes to cybersecurity, regulatory compliances, and technology optimizations will never go away. It’s not a one-and-done deal, but rather a continuous journey.
+
+Unfortunately, most organizations don’t understand this which is why sooner or later both come back to haunt them.
+
+To solve these two pain points, Infopercept opened 24x7 optimization centers for our customers in which we took complete responsibility for optimizing their technology for better security and keeping up to date with regulatory compliances, whereas they could focus on their daily affairs without having to worry about these two issues.
+
+### 2019: Built an Automation and Inception Platform
+
+Previously, we used to rely on third-party technologies to provide security services to our clients. But soon we realized that it was hindering our ability to go beyond and offer truly end-to-end security services to businesses. Our customers would often face challenges that couldn’t be solved with third-party technologies, which is why Infopercept began to build its platform ['Invinsense'](https://www.infopercept.com/invinsense/) to provide comprehensive cybersecurity services to our customers.
+
+## Phase 2 - Services Driving the Platform
+
+### 2020: Launched [Invinsense](https://www.infopercept.com/invinsense/) Version 1
+
+Adversaries are some of the most creative people in the world as they are continuously coming up with new ways to attack an organization that leaves people dumbstruck, which is why cybersecurity has moved from prevention to consolidation.
+
+However, this consolidation was done only on the defensive side, whereas completely ignoring the offensive one. With Invinsense version 1, Infopercept consolidated all the approaches of cybersecurity: offensive, defensive, and security compliances into one platform.
+
+### 2021: Launched Invinsense Version 2 with OODA, ODS, RBAS, GSOS
+
+Every platform has a specific process to achieve its intended purpose. With the second version of Invinsense, we aligned different approaches to cybersecurity as a process within Invinsense.
+
+These processes made sure that our detection and response, offensive security, and security compliance modules deliver constantly improved cybersecurity posture.
+
+### 2022: Launched [Invinsense](https://www.infopercept.com/cybersecurity-with-invinsense/) Version 3 with XDR, XDR+, OXDR, GSOS
+
+With the industry moving towards Extended Detection and Response, we made deeper consolidation within Invinsense and aligned it to the industry definition of XDR. On top of it, we included deception and patch management in our XDR+. Furthermore, we also integrated our offensive security tools to improve detection and response and named it Offensive Extended Detection and Response (OXDR).
+
+### 2023: Launched [Invinsense](https://www.infopercept.com/invinsense/) Version 4, transitioning into a SaaS-Based Platform
+
+For Infopercept, customers are the most important part of our business. We placed ourselves in our client’s shoes and came to a realization that we needed to streamline our platform further to make everything as hassle-free as possible. Thus, in version 4, Invinsense fully transitioned into a SaaS-based platform, enabling our customers to access our entire platform from anywhere thereby making everything simpler and straightforward.
+
+## Phase 3 - The Platform Driving the Services
+
+### 2024: Launched [Invinsense](https://www.infopercept.com/invinsense-5-made-in-india-cybersecurity-platform/) Version 5
+
+In the Cybersecurity landscape, hundreds of organizations have fallen prey to Malware attacks, DDOS, Phishing Scams, Ransomware, Data breaches, Cloud vulnerabilities, Viruses, Worms, botnets, and Spyware. To help businesses combat them better, faster, and with minimum trouble, we launched version 5 of our cybersecurity platform. This version of Invinsense is armed with artificial intelligence, and machine learning and its use cases are GenAI-enabled to deal with any cyberattacks swiftly.
+
+
+
+**-- Jiten Bhalgama** <a href="https://www.linkedin.com/in/jiten-bhalgama?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><svg class="svg-inline--fa fa-linkedin fa-lg" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="linkedin" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="20" height="20" data-fa-i2svg=""><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path></svg></a> 
+
+**Co-Founder / Director TOC**
