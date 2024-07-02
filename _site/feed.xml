@@ -1,0 +1,77 @@
+
+
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <id>http://localhost:4000/blogs/</id>
+  <title>Infopercept</title>
+  <subtitle>Infopercept, Cyber Security, Blogs</subtitle>
+  <updated>2024-07-02T17:24:59+08:00</updated>
+  <author>
+    <name>Invinsense</name>
+    <uri>http://localhost:4000/blogs/</uri>
+  </author>
+  <link rel="self" type="application/atom+xml" href="http://localhost:4000/blogs/feed.xml"/>
+  <link rel="alternate" type="text/html" hreflang="en"
+    href="http://localhost:4000/blogs/"/>
+  <generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator>
+  <rights> © 2024 Invinsense </rights>
+  <icon>/blogs/assets/img/favicons/favicon.ico</icon>
+  <logo>/blogs/assets/img/favicons/favicon-96x96.png</logo>
+
+
+  
+  <entry>
+    <title>The Rise of Software Supply Chain Attacks</title>
+    <link href="http://localhost:4000/blogs/posts/text-and-typography/" rel="alternate" type="text/html" title="The Rise of Software Supply Chain Attacks" />
+    <published>2024-06-17T11:33:00+08:00</published>
+  
+    <updated>2024-07-02T12:15:07+08:00</updated>
+  
+    <id>http://localhost:4000/blogs/posts/text-and-typography/</id>
+    <content src="http://localhost:4000/blogs/posts/text-and-typography/" />
+    <author>
+      <name>cotes</name>
+    </author>
+
+  
+    
+    <category term="Infopercept" />
+    
+    <category term="Cyber Security" />
+    
+  
+
+  <summary>Building an application is like running a marathon.</summary>
+
+  </entry>
+
+  
+  <entry>
+    <title>Infopercept - The Journey of Creating a Global Platform-Led Managed Security Services Company</title>
+    <link href="http://localhost:4000/blogs/posts/write-a-new-post/" rel="alternate" type="text/html" title="Infopercept - The Journey of Creating a Global Platform-Led Managed Security Services Company" />
+    <published>2024-06-16T14:10:00+08:00</published>
+  
+    <updated>2024-07-02T12:15:07+08:00</updated>
+  
+    <id>http://localhost:4000/blogs/posts/write-a-new-post/</id>
+    <content src="http://localhost:4000/blogs/posts/write-a-new-post/" />
+    <author>
+      <name>cotes</name>
+    </author>
+
+  
+    
+    <category term="Infopercept" />
+    
+    <category term="Risk Management" />
+    
+  
+
+  <summary>Rising cyberattacks on all kinds of organizations have led to strict security compliances by regulators worldwide. As a result, today every business is struggling with two challenges: combating cyberattacks and adhering to security compliances.
+
+Infopercept was established to take ownership of these two core issues on behalf of the client organizations and tackle them through its cybersecurity ...</summary>
+
+  </entry>
+
+</feed>
+
+
