@@ -4,7 +4,7 @@
   <id>http://localhost:4000/blogs/</id>
   <title>Infopercept</title>
   <subtitle>Infopercept, Cyber Security, Blogs</subtitle>
-  <updated>2024-07-02T18:49:50+08:00</updated>
+  <updated>2024-07-02T18:55:55+08:00</updated>
   <author>
     <name>Invinsense</name>
     <uri>http://localhost:4000/blogs/</uri>
@@ -17,6 +17,34 @@
   <icon>/blogs/assets/img/favicons/favicon.ico</icon>
   <logo>/blogs/assets/img/favicons/favicon-96x96.png</logo>
 
+
+  
+  <entry>
+    <title>Infopercept - The Journey of Creating a Global Platform-Led Managed Security Services Company</title>
+    <link href="http://localhost:4000/blogs/posts/write-a-new-post-copy/" rel="alternate" type="text/html" title="Infopercept - The Journey of Creating a Global Platform-Led Managed Security Services Company" />
+    <published>2024-07-02T14:10:00+08:00</published>
+  
+    <updated>2024-07-02T14:10:00+08:00</updated>
+  
+    <id>http://localhost:4000/blogs/posts/write-a-new-post-copy/</id>
+    <content src="http://localhost:4000/blogs/posts/write-a-new-post-copy/" />
+    <author>
+      <name>cotes</name>
+    </author>
+
+  
+    
+    <category term="Infopercept" />
+    
+    <category term="Risk Management" />
+    
+  
+
+  <summary>Rising cyberattacks on all kinds of organizations have led to strict security compliances by regulators worldwide. As a result, today every business is struggling with two challenges: combating cyberattacks and adhering to security compliances.
+
+Infopercept was established to take ownership of these two core issues on behalf of the client organizations and tackle them through its cybersecurity ...</summary>
+
+  </entry>
 
   
   <entry>
